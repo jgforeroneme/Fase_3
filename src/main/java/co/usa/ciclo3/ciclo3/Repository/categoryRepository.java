@@ -30,8 +30,8 @@ public class categoryRepository {
         return categoryCrudRepository.findById(id);
     }
     
-    public Category save(Category p){
-        return categoryCrudRepository.save(p);
+    public Category save(Category c){
+        return categoryCrudRepository.save(c);
     }
     
    public void delete(Category c){

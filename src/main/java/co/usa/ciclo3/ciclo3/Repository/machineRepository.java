@@ -30,8 +30,8 @@ public class machineRepository {
         return machineCrudRepository.findById(id);
     }
     
-    public Machine save(Machine p){
-        return machineCrudRepository.save(p);
+    public Machine save(Machine c){
+        return machineCrudRepository.save(c);
     }
     
        public void delete(Machine c){

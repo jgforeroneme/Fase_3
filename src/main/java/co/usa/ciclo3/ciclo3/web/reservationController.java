@@ -72,7 +72,7 @@ public class reservationController {
     public StatustAmount getStatustAmount(){
         return reservationService.getStatusReport();
     }
-    @GetMapping("/report-categoria")
+    @GetMapping("/report-clients")
     public List<CountClient> getCountClient(){
         return reservationService.getTopClients();
     }

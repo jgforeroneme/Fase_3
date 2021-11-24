@@ -43,20 +43,24 @@ public class machineService {
         }
     }
     
-    public Machine update(Machine machine){
-        if(machine.getId()==null){
-            Optional<Machine>g= machineRepository.getMachine(machine.getId());
-                if(!g.isEmpty()){
-                if(machine.getName()!=null){
-                    g.get().setName(machine.getName());
+    public Machine update(Machine c){
+        if(c.getId()!=null){
+            Optional<Machine>g=machineRepository.getMachine(c.getId());
+            if(!g.isEmpty()){
+                if(c.getName()!=null){
+                    g.get().setName(c.getName());
                 }
-                if(machine.getName()!=null){
-                    g.get().setName(machine.getName());
+                if(c.getDescription()!=null){
+                    g.get().setDescription(c.getDescription());
+                }
+                if(c.getName()!=null){
+                    g.get().setName(c.getName());
                 }
                 return machineRepository.save(g.get());
             }
         }
-        return machine;
+        return c;
+
     }
  
     public boolean deleteMachine(int id){
