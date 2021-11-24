@@ -27,32 +27,33 @@ public class Reservation implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Temporal(TemporalType.DATE)
+    private Integer idReservation;
     private Date startDate;
-    @Temporal(TemporalType.DATE)
     private Date endDate;    
-    private String status;
+    private String status="created";
     
-    
-    @ManyToOne
-    @JoinColumn(name = "idClient")
-    private Client client;
     
     @ManyToOne
     @JoinColumn(name = "idMachine")
+    @JsonIgnoreProperties("reservations")
     private Machine machine;
     
     @ManyToOne
-    @JoinColumn(name="idScore")
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"reservations", "messages"})
+    private Client client;
+    
+    
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
+    @JsonIgnoreProperties("reservation")
     private Score score;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -63,12 +64,12 @@ public class Reservation implements Serializable{
         this.startDate = startDate;
     }
 
-    public Date getDevolutionDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setDevolutionDate(Date devolutionDate) {
-        this.endDate = devolutionDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public String getStatus() {
@@ -79,20 +80,20 @@ public class Reservation implements Serializable{
         this.status = status;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public Machine getMachine() {
         return machine;
     }
 
     public void setMachine(Machine machine) {
         this.machine = machine;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Score getScore() {
@@ -104,7 +105,4 @@ public class Reservation implements Serializable{
     }
 
     
-
-    
-   
 }

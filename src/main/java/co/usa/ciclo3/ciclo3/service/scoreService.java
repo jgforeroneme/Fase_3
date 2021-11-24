@@ -31,10 +31,10 @@ public class scoreService {
     }
     
     public Score save(Score p){
-        if(p.getId()==null){
+        if(p.getIdScore()==null){
             return scoreRepository.save(p);
     }else{
-            Optional<Score> paux=scoreRepository.getScore(p.getId());
+            Optional<Score> paux=scoreRepository.getScore(p.getIdScore());
             if(paux.isEmpty()){
                 return scoreRepository.save(p);
             }else{
@@ -44,14 +44,14 @@ public class scoreService {
     }
     
     public Score update(Score score){
-        if(score.getId()==null){
-            Optional<Score>g= scoreRepository.getScore(score.getId());
+        if(score.getIdScore()==null){
+            Optional<Score>g= scoreRepository.getScore(score.getIdScore());
                 if(!g.isEmpty()){
-                if(score.getId()!=null){
-                    g.get().setId(score.getId());
+                if(score.getIdScore()!=null){
+                    g.get().setIdScore(score.getIdScore());
                 }
-                if(score.getId()!=null){
-                    g.get().setId(score.getId());
+                if(score.getIdScore()!=null){
+                    g.get().setIdScore(score.getIdScore());
                 }
                 return scoreRepository.save(g.get());
             }

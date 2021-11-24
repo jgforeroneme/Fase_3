@@ -16,6 +16,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name="Score")
@@ -23,48 +24,48 @@ public class Score implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Integer score;
-    private String message;
+    private Integer idScore;
+    private String messageText;
+    private Integer stars;
+    
 
-    @OneToMany(mappedBy = "score", cascade = CascadeType.PERSIST)
+    @OneToOne
     @JsonIgnoreProperties({"score"})
-    private List<Reservation> reservation;
+    private Reservation reservation;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdScore() {
+        return idScore;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdScore(Integer idScore) {
+        this.idScore = idScore;
     }
 
-    public Integer getScore() {
-        return score;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 
-    public String getMessage() {
-        return message;
+    public Integer getStars() {
+        return stars;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setStars(Integer stars) {
+        this.stars = stars;
     }
 
-    public List<Reservation> getReservation() {
+    public Reservation getReservation() {
         return reservation;
     }
 
-    public void setReservation(List<Reservation> reservation) {
+    public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
-    
-    
-    
+
+        
 
     
     

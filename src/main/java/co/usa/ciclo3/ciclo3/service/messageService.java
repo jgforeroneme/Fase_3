@@ -31,10 +31,10 @@ public class messageService {
     }
     
     public Message save(Message p){
-        if(p.getId()==null){
+        if(p.getIdMessage()==null){
             return messageRepository.save(p);
     }else{
-            Optional<Message> paux=messageRepository.getmessage(p.getId());
+            Optional<Message> paux=messageRepository.getmessage(p.getIdMessage());
             if(paux.isEmpty()){
                 return messageRepository.save(p);
             }else{
@@ -44,14 +44,14 @@ public class messageService {
     }
     
     public Message update(Message message){
-        if(message.getId()==null){
-            Optional<Message>g= messageRepository.getmessage(message.getId());
+        if(message.getIdMessage()==null){
+            Optional<Message>g= messageRepository.getmessage(message.getIdMessage());
                 if(!g.isEmpty()){
-                if(message.getId()!=null){
-                    g.get().setId(message.getId());
+                if(message.getIdMessage()!=null){
+                    g.get().setIdMessage(message.getIdMessage());
                 }
-                if(message.getId()!=null){
-                    g.get().setId(message.getId());
+                if(message.getIdMessage()!=null){
+                    g.get().setIdMessage(message.getIdMessage());
                 }
                 return messageRepository.save(g.get());
             }

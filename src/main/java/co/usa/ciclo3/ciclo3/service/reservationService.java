@@ -37,10 +37,10 @@ public class reservationService {
     }
     
     public Reservation save(Reservation p){
-        if(p.getId()==null){
+        if(p.getIdReservation()==null){
             return reservationRepository.save(p);
     }else{
-            Optional<Reservation> paux=reservationRepository.getReservation(p.getId());
+            Optional<Reservation> paux=reservationRepository.getReservation(p.getIdReservation());
             if(paux.isEmpty()){
                 return reservationRepository.save(p);
             }else{
@@ -50,14 +50,14 @@ public class reservationService {
     }
     
     public Reservation update(Reservation reservation){
-        if(reservation.getId()==null){
-            Optional<Reservation>g= reservationRepository.getReservation(reservation.getId());
+        if(reservation.getIdReservation()==null){
+            Optional<Reservation>g= reservationRepository.getReservation(reservation.getIdReservation());
                 if(!g.isEmpty()){
-                if(reservation.getId()!=null){
-                    g.get().setId(reservation.getId());
+                if(reservation.getIdReservation()!=null){
+                    g.get().setIdReservation(reservation.getIdReservation());
                 }
-                if(reservation.getId()!=null){
-                    g.get().setId(reservation.getId());
+                if(reservation.getIdReservation()!=null){
+                    g.get().setIdReservation(reservation.getIdReservation());
                 }
                 return reservationRepository.save(g.get());
             }
