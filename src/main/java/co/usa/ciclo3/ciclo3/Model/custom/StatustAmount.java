@@ -13,7 +13,7 @@ public class StatustAmount {
     private int completed;
     private int cancelled;
     
-public StatustAmount(int cempleted, int cancelled){
+public StatustAmount(int completed, int cancelled){
     this.completed = completed;
     this.cancelled = cancelled;
 }
