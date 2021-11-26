@@ -43,30 +43,30 @@ public class clientService {
         }
     }
     
-    public Client update(Client client){
-        if(client.getIdClient()==null){
-            Optional<Client>g= clientRepository.getclient(client.getIdClient());
+    public Client update(Client c){
+        if(c.getIdClient()==null){
+            Optional<Client>g= clientRepository.getclient(c.getIdClient());
             if(!g.isEmpty()){
-                if(client.getName()!=null){
-                    g.get().setName(client.getName());
+                if(c.getName()!=null){
+                    g.get().setName(c.getName());
                 }
-                if(client.getEmail()!=null){
-                    g.get().setEmail(client.getEmail());
+                if(c.getEmail()!=null){
+                    g.get().setEmail(c.getEmail());
                 }
-                if(client.getPassword()!=null){
-                    g.get().setPassword(client.getPassword());
+                if(c.getPassword()!=null){
+                    g.get().setPassword(c.getPassword());
                 }
-                if(client.getName()!=null){
-                    g.get().setName(client.getName());
+                if(c.getName()!=null){
+                    g.get().setName(c.getName());
                 }
-                if(client.getAge()!=null){
-                    g.get().setAge(client.getAge());
+                if(c.getAge()!=null){
+                    g.get().setAge(c.getAge());
                 }
                 clientRepository.save(g.get());
                 return clientRepository.save(g.get());
             }
         }
-        return client;
+        return c;
     }
  
     public boolean deleteClient(int idClient){
