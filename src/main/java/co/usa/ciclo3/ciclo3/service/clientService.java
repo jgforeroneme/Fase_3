@@ -44,12 +44,10 @@ public class clientService {
     }
     
     public Client update(Client c){
-        if(c.getIdClient()==null){
-            Optional<Client>g= clientRepository.getclient(c.getIdClient());
+        if(c.getIdClient()!=null){
+            Optional<Client>g=clientRepository.getclient(c.getIdClient());
             if(!g.isEmpty()){
-                if(c.getName()!=null){
-                    g.get().setName(c.getName());
-                }
+                System.out.println("bla bla bla");
                 if(c.getEmail()!=null){
                     g.get().setEmail(c.getEmail());
                 }
@@ -62,11 +60,12 @@ public class clientService {
                 if(c.getAge()!=null){
                     g.get().setAge(c.getAge());
                 }
-                clientRepository.save(g.get());
-                return clientRepository.save(g.get());
+               clientRepository.save(g.get());
+                return g.get();
             }
         }
         return c;
+
     }
  
     public boolean deleteClient(int idClient){
