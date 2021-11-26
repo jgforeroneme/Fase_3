@@ -52,13 +52,17 @@ public class reservationService {
     public Reservation update(Reservation reservation){
         if(reservation.getIdReservation()==null){
             Optional<Reservation>g= reservationRepository.getReservation(reservation.getIdReservation());
-                if(!g.isEmpty()){
-                if(reservation.getIdReservation()!=null){
-                    g.get().setIdReservation(reservation.getIdReservation());
+            if(!g.isEmpty()){
+                if(reservation.getStartDate()!=null){
+                    g.get().setStartDate(reservation.getStartDate());
                 }
-                if(reservation.getIdReservation()!=null){
-                    g.get().setIdReservation(reservation.getIdReservation());
+                if(reservation.getDevolutionDate()!=null){
+                    g.get().setDevolutionDate(reservation.getDevolutionDate());
                 }
+                if(reservation.getStatus()!=null){
+                    g.get().setStatus(reservation.getStatus());
+                }
+                reservationRepository.save(g.get());
                 return reservationRepository.save(g.get());
             }
         }

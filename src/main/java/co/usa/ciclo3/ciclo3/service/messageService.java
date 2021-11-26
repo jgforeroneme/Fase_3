@@ -46,13 +46,11 @@ public class messageService {
     public Message update(Message message){
         if(message.getIdMessage()==null){
             Optional<Message>g= messageRepository.getmessage(message.getIdMessage());
-                if(!g.isEmpty()){
-                if(message.getIdMessage()!=null){
-                    g.get().setIdMessage(message.getIdMessage());
+            if(!g.isEmpty()){
+                if(message.getMessageText()!=null){
+                    g.get().setMessageText(message.getMessageText());
                 }
-                if(message.getIdMessage()!=null){
-                    g.get().setIdMessage(message.getIdMessage());
-                }
+                messageRepository.save(g.get());
                 return messageRepository.save(g.get());
             }
         }

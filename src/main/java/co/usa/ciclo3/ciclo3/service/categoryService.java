@@ -56,6 +56,7 @@ public class categoryService {
                 if(c.getName()!=null){
                     g.get().setName(c.getName());
                 }
+                categoryRepository.save(g.get());
                 return categoryRepository.save(g.get());
             }
         }

@@ -46,13 +46,23 @@ public class clientService {
     public Client update(Client client){
         if(client.getIdClient()==null){
             Optional<Client>g= clientRepository.getclient(client.getIdClient());
-                if(!g.isEmpty()){
+            if(!g.isEmpty()){
                 if(client.getName()!=null){
                     g.get().setName(client.getName());
+                }
+                if(client.getEmail()!=null){
+                    g.get().setEmail(client.getEmail());
+                }
+                if(client.getPassword()!=null){
+                    g.get().setPassword(client.getPassword());
                 }
                 if(client.getName()!=null){
                     g.get().setName(client.getName());
                 }
+                if(client.getAge()!=null){
+                    g.get().setAge(client.getAge());
+                }
+                clientRepository.save(g.get());
                 return clientRepository.save(g.get());
             }
         }

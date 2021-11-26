@@ -14,9 +14,9 @@ import co.usa.ciclo3.ciclo3.Model.Client;
 public class CountClient {
     
     private Client client;
-    private Integer total;
+    private Long total;
     
-    public CountClient(Integer total, Client client){        
+    public CountClient(Long total, Client client){        
         this.total = total;
         this.client = client;        
     }
@@ -29,11 +29,11 @@ public class CountClient {
         this.client = client;
     }
 
-    public Integer getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
     

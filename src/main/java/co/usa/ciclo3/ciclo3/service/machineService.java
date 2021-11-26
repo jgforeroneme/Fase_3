@@ -47,16 +47,24 @@ public class machineService {
         if(c.getId()!=null){
             Optional<Machine>g=machineRepository.getMachine(c.getId());
             if(!g.isEmpty()){
+                System.out.println("bla bla bla");
                 if(c.getName()!=null){
                     g.get().setName(c.getName());
                 }
                 if(c.getDescription()!=null){
                     g.get().setDescription(c.getDescription());
                 }
-                if(c.getName()!=null){
-                    g.get().setName(c.getName());
+                if(c.getBrand()!=null){
+                    g.get().setBrand(c.getBrand());
                 }
-                return machineRepository.save(g.get());
+                if(c.getYear()!=null){
+                    g.get().setYear(c.getYear());
+                }
+                if(c.getCategory()!=null){
+                    g.get().setCategory(c.getCategory());
+                }
+                machineRepository.save(g.get());
+                return g.get();
             }
         }
         return c;
